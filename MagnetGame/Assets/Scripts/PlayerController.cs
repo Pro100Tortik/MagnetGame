@@ -11,6 +11,15 @@ public class PlayerController : MonoBehaviour
     [Header("Player Controller")]
     [SerializeField] private PlayerMode playerMode;
     [SerializeField] private Attractor attractor;
+    [SerializeField] private SpriteRenderer bodyRenderer;
+    [SerializeField] private SpriteRenderer headRenderer;
+    [SerializeField] private Animator headAnimator;
+    [SerializeField] private Animator bodyAnimator;
+
+    [SerializeField] private string walkStringBody;
+    [SerializeField] private string walkStringHead;
+    [SerializeField] private string idleStringBody;
+    [SerializeField] private string idleStringHead;
 
     [Header("Controller Settings")]
     [SerializeField] private float acceleration = 20f;
@@ -29,6 +38,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 _groundNormal;
     private bool _isGrounded;
     private float _coyoteTimer;
+    private bool _right;
+
+    private GameManager _gameManager;
 
     private void Awake()
     {
@@ -37,13 +49,24 @@ public class PlayerController : MonoBehaviour
         _rigidbody.freezeRotation = true;
     }
 
+    private void Start() => _gameManager = GameManager.Instance;
+
     private void GetInputs()
     {
         switch (playerMode)
         {
             case PlayerMode.Player1:
-                _horizontalInput = Input.GetKey(KeyCode.A) ? -1f : Input.GetKey(KeyCode.D) ? 1f : 0f;
-                _isJumping = Input.GetKey(KeyCode.W);
+                if (!_gameManager.IsPaused)
+                {
+                    _horizontalInput = Input.GetKey(KeyCode.A) ? -1f : Input.GetKey(KeyCode.D) ? 1f : 0f;
+                    _isJumping = Input.GetKey(KeyCode.W);
+                }
+                else
+                {
+                    _horizontalInput = 0;
+                    _isJumping = false;
+                    return;
+                }
 
                 if (Input.GetKeyDown(KeyCode.S))
                     attractor.StartAttracting();
@@ -52,8 +75,17 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case PlayerMode.Player2:
-                _horizontalInput = Input.GetKey(KeyCode.LeftArrow) ? -1f : Input.GetKey(KeyCode.RightArrow) ? 1f : 0f;
-                _isJumping = Input.GetKey(KeyCode.UpArrow);
+                if (!_gameManager.IsPaused)
+                {
+                    _horizontalInput = Input.GetKey(KeyCode.LeftArrow) ? -1f : Input.GetKey(KeyCode.RightArrow) ? 1f : 0f;
+                    _isJumping = Input.GetKey(KeyCode.UpArrow);
+                }
+                else
+                {
+                    _horizontalInput = 0;
+                    _isJumping = false;
+                    return;
+                }
 
                 if (Input.GetKeyDown(KeyCode.DownArrow))
                     attractor.StartAttracting();
@@ -74,6 +106,22 @@ public class PlayerController : MonoBehaviour
         _rigidbody.gravityScale = _isGrounded ? 0f : _rigidbody.velocity.y < -1f ? 2f : 1f;
 
         Move();
+
+        if (_horizontalInput != 0)
+        {
+            _right = _horizontalInput > 0;
+            bodyAnimator.CrossFade(walkStringBody, 0f);
+            headAnimator.CrossFade(walkStringHead, 0f);
+        }
+        else
+        {
+            bodyAnimator.CrossFade(idleStringBody, 0f);
+            headAnimator.CrossFade(idleStringHead, 0f);
+        }
+
+        headRenderer.flipX = _right;
+        bodyRenderer.flipX = _right;
+
         Jump();
 
         _rigidbody.velocity = _velocity;
