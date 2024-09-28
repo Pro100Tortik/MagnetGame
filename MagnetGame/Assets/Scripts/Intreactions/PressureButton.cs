@@ -10,8 +10,6 @@ public class PressureButton : MonoBehaviour
     private bool _activated;
     private AudioSource source;
 
-    private void Awake() => source = gameObject.AddComponent<AudioSource>();
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.TryGetComponent(out Rigidbody2D rb))
@@ -43,6 +41,15 @@ public class PressureButton : MonoBehaviour
         for (int i = 0; i < interactables.Length; i++)
         {
             Gizmos.DrawLine(transform.position, interactables[i].transform.position);
+        }
+    }
+
+    private void OnValidate()
+    {
+        if (source == null)
+        {
+            if (!TryGetComponent(out source))
+                source = gameObject.AddComponent<AudioSource>();
         }
     }
 

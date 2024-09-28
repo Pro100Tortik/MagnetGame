@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 124268170022504422}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2009931571330829246, guid: 59bba59131d9fa14ea2c9accde879dd1, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.2
@@ -245,7 +245,7 @@ Transform:
   - {fileID: 8668200579988246580}
   - {fileID: 2603779660307817083}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5606121361453275570
 SpriteRenderer:

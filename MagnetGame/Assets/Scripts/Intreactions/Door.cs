@@ -14,7 +14,6 @@ public class Door : AbstractInteraction
 
     private void Awake()
     {
-        source = gameObject.AddComponent<AudioSource>();
         _openedPos = transform.localPosition + transform.up * openHeight;
         _closedPos = transform.localPosition;
     }
@@ -37,6 +36,15 @@ public class Door : AbstractInteraction
 
         source.pitch = Random.Range(0.95f, 1.05f);
         source.PlayOneShot(open);
+    }
+
+    private void OnValidate()
+    {
+        if (source == null)
+        {
+            if (!TryGetComponent(out source))
+                source = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     public override void Close()
