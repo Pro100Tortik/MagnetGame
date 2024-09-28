@@ -58,19 +58,13 @@ public class LevelEndScreen : MonoBehaviour
     private string GetGrade()
     {
         if (_collected >= _collectables.Length && timer.CurrentLevelTime < 90f)
-        {
             return "S";
-        }
 
         if (_collected < _collectables.Length && timer.CurrentLevelTime < 90f)
-        {
             return "A";
-        }
 
         if (timer.CurrentLevelTime > 120f)
-        {
             return "C";
-        }
         else if (timer.CurrentLevelTime > 90f)
             return "B";
 
