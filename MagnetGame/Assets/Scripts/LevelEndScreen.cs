@@ -53,6 +53,8 @@ public class LevelEndScreen : MonoBehaviour
         timerText.text = timer.CurrentLevelTime.ToString("0.0");
         collectablesText.text = $"{_collected}/{_collectables.Length}";
         gradeText.text = $"grade: {GetGrade()}";
+
+        GameSaver.Instance.UnlockNewLevel(FindObjectOfType<LevelExit>().NextLevel);
     }
 
     private string GetGrade()
