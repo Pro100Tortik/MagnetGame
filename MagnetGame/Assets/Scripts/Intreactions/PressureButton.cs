@@ -4,7 +4,7 @@ public class PressureButton : MonoBehaviour
 {
     [SerializeField] private AudioClip on;
     [SerializeField] private AudioClip off;
-    [SerializeField] private AbstractInteraction interactable;
+    [SerializeField] private AbstractInteraction[] interactables;
     [SerializeField] private float massToActivate = 1f;
     private float _currentMass;
     private bool _activated;
@@ -21,8 +21,12 @@ public class PressureButton : MonoBehaviour
 
         if (!_activated && _currentMass >= massToActivate)
         {
-            interactable?.Interact();
-            interactable?.Open();
+            for (int i = 0; i < interactables.Length; i++)
+            {
+                interactables[i]?.Interact();
+                interactables[i]?.Open();
+            }
+
             source.pitch = Random.Range(0.95f, 1.05f);
             source.PlayOneShot(on);
             _activated = true;
@@ -32,11 +36,14 @@ public class PressureButton : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (interactable == null)
+        if (interactables == null)
             return;
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, interactable.transform.position);
+        for (int i = 0; i < interactables.Length; i++)
+        {
+            Gizmos.DrawLine(transform.position, interactables[i].transform.position);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -48,7 +55,11 @@ public class PressureButton : MonoBehaviour
 
         if (_activated && _currentMass < massToActivate)
         {
-            interactable?.Close();
+            for (int i = 0; i < interactables.Length; i++)
+            {
+                interactables[i]?.Close();
+            }
+
             _activated = false;
             source.pitch = Random.Range(0.95f, 1.05f);
             source.PlayOneShot(off);
