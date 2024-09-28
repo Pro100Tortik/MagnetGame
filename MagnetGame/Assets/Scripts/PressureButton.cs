@@ -30,6 +30,15 @@ public class PressureButton : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        if (interactable == null)
+            return;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, interactable.transform.position);
+    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.TryGetComponent(out Rigidbody2D rb))

@@ -102,4 +102,6 @@ public class Attractor : MonoBehaviour
 
         _currentAttractionRange = endValue;
     }
+
+    private void OnDestroy() => _cancellationTokenSource?.Cancel();
 }

@@ -4,11 +4,15 @@ public class PlayerController : MonoBehaviour
 {
     private enum PlayerMode
     { 
+        None,
         Player1,
         Player2
     }
 
     [Header("Player Controller")]
+    [SerializeField] private AudioClip[] deathSounds;
+    [SerializeField] private ParticleSystem deathEffect;
+    [SerializeField] private ParticleSystem groundParticles;
     [SerializeField] private PlayerMode playerMode;
     [SerializeField] private Attractor attractor;
     [SerializeField] private SpriteRenderer bodyRenderer;
@@ -51,6 +55,14 @@ public class PlayerController : MonoBehaviour
 
     private void Start() => _gameManager = GameManager.Instance;
 
+    public void DIE()
+    {
+        playerMode = PlayerMode.None;
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        AudioManager.Instance.PlaySound(deathSounds.GetRandomElement());
+        Destroy(gameObject);
+    }
+
     private void GetInputs()
     {
         switch (playerMode)
@@ -92,6 +104,9 @@ public class PlayerController : MonoBehaviour
                 else if (Input.GetKeyUp(KeyCode.DownArrow))
                     attractor.StopAttracting();
                 break;
+
+            case PlayerMode.None:
+                break;
         }
     }
 
@@ -107,13 +122,16 @@ public class PlayerController : MonoBehaviour
 
         Move();
 
+        if (_isGrounded && Mathf.Abs(_velocity.x) > 0.5f)
+            groundParticles.Play();
+
         if (_horizontalInput != 0)
         {
             _right = _horizontalInput > 0;
             bodyAnimator.CrossFade(walkStringBody, 0f);
             headAnimator.CrossFade(walkStringHead, 0f);
         }
-        else
+        else if (Mathf.Abs(_velocity.x) < 0.5f)
         {
             bodyAnimator.CrossFade(idleStringBody, 0f);
             headAnimator.CrossFade(idleStringHead, 0f);

@@ -139,6 +139,8 @@ GameObject:
   - component: {fileID: 2207223686504737388}
   - component: {fileID: 2318382525808654731}
   - component: {fileID: 4887991611950902009}
+  - component: {fileID: 7997341375284399085}
+  - component: {fileID: 1781635519004929414}
   m_Layer: 0
   m_Name: Black Hole
   m_TagString: Untagged
@@ -264,6 +266,53 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   radiusVisualizer: {fileID: 8193894304320930736}
+--- !u!58 &7997341375284399085
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4873007209216940884}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &1781635519004929414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4873007209216940884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70faa5798a8856a4bb7c8c447044cab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5107786138501394297
 GameObject:
   m_ObjectHideFlags: 0

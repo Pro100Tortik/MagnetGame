@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public event Action Paused;
+
     public static GameManager Instance => _instance;
     private static GameManager _instance;
 
@@ -27,13 +30,17 @@ public class GameManager : MonoBehaviour
 
     public void Restart() => Utils.RestartLevel();
 
+    public void TogglePause()
+    {
+        Utils.ToggleCursor();
+        IsPaused = Cursor.lockState != CursorLockMode.Locked;
+        Paused?.Invoke();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Utils.ToggleCursor();
-            IsPaused = Cursor.lockState != CursorLockMode.Locked;
-        }
+            TogglePause();
 
         if (Input.GetKeyDown(KeyCode.R))
             Restart();
