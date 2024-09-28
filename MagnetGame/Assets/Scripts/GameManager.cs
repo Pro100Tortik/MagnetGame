@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public event Action Paused;
+    public event Action LevelComplete;
 
     public static GameManager Instance => _instance;
     private static GameManager _instance;
@@ -37,12 +38,15 @@ public class GameManager : MonoBehaviour
         Paused?.Invoke();
     }
 
+    public void LevelCompleted()
+    {
+        TogglePause();
+        LevelComplete?.Invoke();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             TogglePause();
-
-        if (Input.GetKeyDown(KeyCode.R))
-            Restart();
     }
 }

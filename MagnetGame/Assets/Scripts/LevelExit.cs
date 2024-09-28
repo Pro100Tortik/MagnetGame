@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class LevelExit : MonoBehaviour
 {
-    [SerializeField] private AudioClip winSound;
+    public string NextLevel => nextLevel;
     [SerializeField] private string nextLevel = "MainMenu";
+    [SerializeField] private AudioClip winSound;
     private int _playersInExitArea;
     private GameManager _gameManager;
     private ChangeLevelManager _changeLevelManager;
@@ -23,7 +24,7 @@ public class LevelExit : MonoBehaviour
 
         if (_playersInExitArea >= 2)
         {
-            _changeLevelManager.ChangeLevel(nextLevel);
+            _gameManager.LevelCompleted();
             AudioManager.Instance.PlaySound(winSound);
             Debug.Log("Level Completed");
         }

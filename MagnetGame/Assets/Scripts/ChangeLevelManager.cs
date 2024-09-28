@@ -11,6 +11,7 @@ public class ChangeLevelManager : MonoBehaviour
     [SerializeField] private float fadeSpeed = 2f;
     private CancellationTokenSource _source;
     private bool _changingLevel = false;
+    private GameManager _gameManager;
 
     private void Awake()
     {
@@ -26,6 +27,8 @@ public class ChangeLevelManager : MonoBehaviour
         _source = new CancellationTokenSource();
         FadeIn(_source);
     }
+
+    private void Start() => _gameManager = GameManager.Instance;
 
     public async void ChangeLevel(string levelName)
     {
@@ -49,6 +52,10 @@ public class ChangeLevelManager : MonoBehaviour
         oper.allowSceneActivation = true;
         await Task.Delay(500);
         _changingLevel = false;
+
+        if (_gameManager.IsPaused)
+            _gameManager.TogglePause();
+
         FadeIn(_source);
     }
 
