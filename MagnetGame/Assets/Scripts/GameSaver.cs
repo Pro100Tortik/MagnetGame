@@ -79,7 +79,7 @@ public class GameSaver : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         LoadSettings();
-        UnlockNewLevel("tutorial3");
+        UnlockNewLevel("Tutorial1");
     }
 
     // Creates new file with default values

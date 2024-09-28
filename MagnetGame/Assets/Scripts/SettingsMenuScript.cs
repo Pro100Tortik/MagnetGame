@@ -51,10 +51,13 @@ namespace ProjectMOMENTUM
 
         private void InitializeVariables()
         {
-            musicVolumeSlider.value = Settings.MusicVolume;
-            SFXVolumeSlider.value = Settings.SFXVolume;
-
-            fullScreenToggle.isOn = Settings.FullScreen;
+            if (musicVolumeSlider.transform.parent.gameObject.activeInHierarchy)
+            {
+                musicVolumeSlider.value = Settings.MusicVolume;
+                SFXVolumeSlider.value = Settings.SFXVolume;
+                fullScreenToggle.isOn = Settings.FullScreen;
+            }
+            
         }
 
         private void OnDisable() => _settings?.SaveSettings();

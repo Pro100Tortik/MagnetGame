@@ -653,7 +653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: tutorial 3
+  m_text: "\u041F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0439 \u0448\u0430\u0433"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 555610bf6a7e1a64b9a4b1f8e5a9b8b1, type: 2}
   m_sharedMaterial: {fileID: 3076937704669914517, guid: 555610bf6a7e1a64b9a4b1f8e5a9b8b1, type: 2}
@@ -784,8 +784,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.68, y: -0.2}
-  m_SizeDelta: {x: 20, y: 5}
+  m_AnchoredPosition: {x: -8.133, y: -0.2}
+  m_SizeDelta: {x: 26.3552, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &251878561
 GameObject:
@@ -4202,11 +4202,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3017028968747686720, guid: 5cdc6eece2f05804ba39d037e6843f13, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.25
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: 3017028968747686720, guid: 5cdc6eece2f05804ba39d037e6843f13, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 4.82
       objectReference: {fileID: 0}
     - target: {fileID: 3017028968747686720, guid: 5cdc6eece2f05804ba39d037e6843f13, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4246,7 +4246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7584149637716112655, guid: 5cdc6eece2f05804ba39d037e6843f13, type: 3}
       propertyPath: nextLevel
-      value: SampleScene
+      value: Lvl1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

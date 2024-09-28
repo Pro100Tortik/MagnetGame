@@ -1,9 +1,21 @@
 {
     "Levels": {
         "keys": [
-            "tutorial3"
+            "tutorial3",
+            "Tutorial1",
+            "Tutorial2",
+            "Tutorial3",
+            "SampleScene",
+            "Lvl1",
+            "Lvl2"
         ],
         "values": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
             true
         ]
     }

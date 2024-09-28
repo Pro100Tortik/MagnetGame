@@ -76,7 +76,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6411441280364358283}
   - component: {fileID: 4628272151458285642}
-  - component: {fileID: 3175691713174619140}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -113,37 +112,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350998416621288129}
   m_CullTransparentMesh: 1
---- !u!114 &3175691713174619140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 350998416621288129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 674e2a0fe7fa3544a91b819b7f5a16ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 59bba59131d9fa14ea2c9accde879dd1, type: 2}
-  fullScreenToggle: {fileID: 4344101546909092096}
-  musicVolumeSlider: {fileID: 9132510238000250349}
-  SFXVolumeSlider: {fileID: 2335692096510838021}
-  OnGoBack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1685120542668071568}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &541470590919180926
 GameObject:
   m_ObjectHideFlags: 0
