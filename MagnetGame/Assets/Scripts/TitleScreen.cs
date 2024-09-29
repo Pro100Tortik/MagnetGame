@@ -10,6 +10,7 @@ public class TitleScreen : MonoBehaviour
     private void Start()
     {
         _gameSaver = GameSaver.Instance;
+        Utils.EnableCursor();
     }
 
     public void StartGame(string levelName) => ChangeLevelManager.Instance.ChangeLevel(levelName);

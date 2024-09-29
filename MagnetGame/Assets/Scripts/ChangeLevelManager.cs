@@ -56,6 +56,9 @@ public class ChangeLevelManager : MonoBehaviour
         if (_gameManager.IsPaused)
             _gameManager.TogglePause();
 
+        if (Utils.GetCurrentLevel().name == "MainMenu")
+            Utils.EnableCursor();
+
         FadeIn(_source);
     }
 

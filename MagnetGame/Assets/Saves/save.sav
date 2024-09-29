@@ -7,9 +7,11 @@
             "Tutorial3",
             "SampleScene",
             "Lvl1",
-            "Lvl2"
+            "Lvl2",
+            "MainMenu"
         ],
         "values": [
+            true,
             true,
             true,
             true,

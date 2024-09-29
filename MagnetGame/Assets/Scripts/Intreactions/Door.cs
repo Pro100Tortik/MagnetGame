@@ -7,7 +7,6 @@ public class Door : AbstractInteraction
     [SerializeField] private AudioClip open;
     [SerializeField] private AudioClip close;
     [SerializeField] private float openHeight = 5f;
-    private AudioSource source;
     private Vector2 _openedPos;
     private Vector2 _closedPos;
     private CancellationTokenSource _source;
@@ -26,39 +25,22 @@ public class Door : AbstractInteraction
 
     public override void Open()
     {
-        if (transform == null)
-            return;
-
         _source?.Cancel();
         _source = new CancellationTokenSource();
 
         DoMagic(_source, _openedPos);
 
-        source.pitch = Random.Range(0.95f, 1.05f);
-        source.PlayOneShot(open);
-    }
-
-    private void OnValidate()
-    {
-        if (source == null)
-        {
-            if (!TryGetComponent(out source))
-                source = gameObject.AddComponent<AudioSource>();
-        }
+        AudioManager.Instance.PlaySound(open);
     }
 
     public override void Close()
     {
-        if (transform == null)
-            return;
-
         _source?.Cancel();
         _source = new CancellationTokenSource();
 
         DoMagic(_source, _closedPos);
 
-        source.pitch = Random.Range(0.95f, 1.05f);
-        source.PlayOneShot(close);
+        AudioManager.Instance.PlaySound(close);
     }
 
     public override void Interact() { }

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using UnityEngine;
 using System.IO;
+using UnityEngine.Audio;
 
 public class SettingsSaver : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SettingsSaver : MonoBehaviour
 
     public GameSettings GameSettings;
 
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private string configDirectory = "Config";
     [SerializeField] private string fileName = "config.cfg";
 
@@ -41,8 +43,13 @@ public class SettingsSaver : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(gameObject);
-
         LoadSettings();
+    }
+
+    private void Start()
+    {
+        audioMixer.SetFloat("SFX", GameSettings.SFXVolume);
+        audioMixer.SetFloat("Music", GameSettings.MusicVolume);
     }
 
     // Creates new file with default values

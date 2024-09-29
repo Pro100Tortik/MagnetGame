@@ -18,14 +18,12 @@ namespace ProjectMOMENTUM
 
         public UnityEvent OnGoBack;
 
-        private GameSettings Settings => _settings.GameSettings;
         private SettingsSaver _settings;
 
-        private void Start()
+        private void OnEnable()
         {
             _settings = SettingsSaver.Instance;
-
-            InitializeVariables();
+            UpdateVariables();
         }
 
         public void GoBack() => OnGoBack?.Invoke();
@@ -33,31 +31,28 @@ namespace ProjectMOMENTUM
         public void SetMusicVolume(float volume)
         {
             audioMixer.SetFloat("Music", volume);
-            Settings.MusicVolume = volume;
+            _settings.GameSettings.MusicVolume = volume;
         }
 
         public void SetSFXVolume(float volume)
         {
             audioMixer.SetFloat("SFX", volume);
-            Settings.SFXVolume = volume;
+            _settings.GameSettings.SFXVolume = volume;
         }
 
         public void ToggleFullScreen(bool value)
         {
-            Screen.fullScreen = fullScreenToggle.isOn;
-            Settings.FullScreen = fullScreenToggle.isOn;
+            Screen.fullScreen = value;
+            _settings.GameSettings.FullScreen = value;
         }
 
 
-        private void InitializeVariables()
+        private void UpdateVariables()
         {
-            if (musicVolumeSlider.transform.parent.gameObject.activeInHierarchy)
-            {
-                musicVolumeSlider.value = Settings.MusicVolume;
-                SFXVolumeSlider.value = Settings.SFXVolume;
-                fullScreenToggle.isOn = Settings.FullScreen;
-            }
-            
+            Debug.Log(_settings.GameSettings.MusicVolume);
+            musicVolumeSlider.value = _settings.GameSettings.MusicVolume;
+            SFXVolumeSlider.value = _settings.GameSettings.SFXVolume;
+            fullScreenToggle.isOn = _settings.GameSettings.FullScreen;
         }
 
         private void OnDisable() => _settings?.SaveSettings();

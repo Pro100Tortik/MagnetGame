@@ -234,7 +234,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7208231781699435081}
+      - m_Target: {fileID: 1757607545692078103}
         m_TargetAssemblyTypeName: ProjectMOMENTUM.SettingsMenuScript, Assembly-CSharp
         m_MethodName: GoBack
         m_Mode: 1
@@ -600,7 +600,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1757607545692078103}
+        m_TargetAssemblyTypeName: ProjectMOMENTUM.SettingsMenuScript, Assembly-CSharp
+        m_MethodName: ToggleFullScreen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1070067286412471585
 GameObject:
@@ -825,7 +837,7 @@ GameObject:
   - component: {fileID: 1554838045455739067}
   - component: {fileID: 7477373118407355505}
   - component: {fileID: 8468829041140796959}
-  - component: {fileID: 7208231781699435081}
+  - component: {fileID: 1757607545692078103}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -892,7 +904,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7208231781699435081
+--- !u!114 &1757607545692078103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1170,7 +1182,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7208231781699435081}
+      - m_Target: {fileID: 1757607545692078103}
         m_TargetAssemblyTypeName: ProjectMOMENTUM.SettingsMenuScript, Assembly-CSharp
         m_MethodName: SetSFXVolume
         m_Mode: 0
@@ -1350,7 +1362,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7208231781699435081}
+      - m_Target: {fileID: 1757607545692078103}
         m_TargetAssemblyTypeName: ProjectMOMENTUM.SettingsMenuScript, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 0
